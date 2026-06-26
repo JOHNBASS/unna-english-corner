@@ -3,7 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unna's English Corner 國中英文教學 | 課程方案與學習公約</title>
+    
+    <!-- SEO 最佳化設定 (Title, Description) -->
+    <title>Unna's English Corner 國中英文教學 | 專業國中英文家教、會考衝刺、新店英文教學</title>
+    <meta name="description" content="您好，我是 Unna！擁有豐富國中英語第一線教學經驗，曾任敦煌書局教材試讀作家。精準把脈學習盲點、傳授高效會考閱讀與解題策略。提供新店大坪林/七張捷運站附近一對一精緻客製化英文教學，讓英文成為孩子自信的基石！">
+    <meta name="keywords" content="國中英文家教, 新店英文家教, 會考英文衝刺, 大坪林英文補習, 國一英文, 國二英文, 國三會考, 一對一英文教學, 敦煌書局教材試讀作家, Unna English">
+    <link rel="canonical" href="https://yourwebsite.com/" />
+
+    <!-- Open Graph 臉書分享預覽標籤 (讓 FB 私訊/貼文分享連結時呈現精美預覽卡片) -->
+    <meta property="og:stable" content="website">
+    <meta property="og:title" content="Unna's English Corner 國中英文教學 | 專業一對一家教方案與學習公約">
+    <meta property="og:description" content="我是 Unna 老師！英國碩士、雅思 7 分、敦煌書局教材試讀作家。提供精緻一對一國中英文教學，系統化拆解文法、特訓閱讀策略與解題定位，歡迎預約體驗！">
+    <meta property="og:image" content="英文教學大頭貼.JPEG"> <!-- 預設分享圖片，可替換為實際網址 -->
+    <meta property="og:type" content="website">
+
+    <!-- JSON-LD 結構化資料 (Schema.org) 幫助 Google 理解商家屬性與提升在地搜尋排名 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unna's English Corner 國中英文教學",
+      "image": "英文教學大頭貼.JPEG",
+      "description": "專業國中英文一對一家教，提供會考英文衝刺、弱底文法建構、客製化個人教材設計。",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大坪林/七張捷運站附近",
+        "addressLocality": "新店區",
+        "addressRegion": "新北市",
+        "postalCode": "231",
+        "addressCountry": "TW"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.9785, 
+        "longitude": 121.5364
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:30"
+      },
+      "priceRange": "$$$"
+    }
+    </script>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -43,258 +96,269 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
         }
         .font-serif-eng {
             font-family: 'Playfair Display', serif;
+        }
+        /* 優化手機端點擊後 Hover 狀態殘留的問題 */
+        @media (hover: hover) {
+            .hover-trigger:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
 
-    <!-- Toast Notification (Custom modal style instead of alerts) -->
+    <!-- Toast Notification (客製化行動彈窗，避免手機 Alert 造成體驗不佳) -->
     <div id="toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl z-50 flex items-center space-x-2 opacity-0 transition-opacity duration-300 pointer-events-none">
-        <svg class="w-5 h-5 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <span id="toast-text" class="text-sm font-medium">複製成功！</span>
     </div>
 
-    <!-- Hero Header Background -->
-    <div class="relative bg-gradient-to-br from-forest-900 via-forest-800 to-slate-900 text-white py-16 px-4 overflow-hidden">
+    <!-- Hero Header Background (RWD 背景與字體比例調校) -->
+    <header class="relative bg-gradient-to-br from-forest-900 via-forest-800 to-slate-900 text-white py-12 sm:py-16 px-4 overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
             
-            <!-- Avatar Frame -->
-            <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full border-4 border-accent-100 shadow-2xl overflow-hidden mb-6 group transition-transform duration-300 hover:scale-105">
-                <!-- Using uploaded file: 英文教學大頭貼.JPEG -->
-                <img id="avatar-img" src="英文教學大頭貼.JPEG" alt="Unna's English Corner" class="w-full h-full object-cover" onerror="fallbackAvatar(this)">
-                <!-- Fallback in case image is missing in rendering environment -->
+            <!-- Avatar Frame (圓形大頭貼 RWD 大小最佳化) -->
+            <div class="relative w-32 h-36 sm:w-36 sm:h-40 rounded-full border-4 border-accent-100 shadow-2xl overflow-hidden mb-5 transition-transform duration-300 hover:scale-105">
+                <!-- 使用上傳檔案: 英文教學大頭貼.JPEG -->
+                <img id="avatar-img" src="英文教學大頭貼.JPEG" alt="Unna 老師 - 國中英文教學大頭貼" class="w-full h-full object-cover" onerror="fallbackAvatar(this)">
+                <!-- 行動端無載入圖片時的備用背景 -->
                 <div id="avatar-fallback" class="hidden absolute inset-0 bg-forest-700 flex items-center justify-center text-white text-2xl font-bold">Unna</div>
             </div>
 
-            <h1 class="text-3xl md:text-5xl font-extrabold font-serif-eng tracking-wide mb-2">Unna's English Corner</h1>
-            <p class="text-lg md:text-xl text-accent-100 font-medium mb-4 tracking-wider">國中英文專業教學</p>
-            <div class="w-20 h-1 bg-accent-500 rounded-full mb-6"></div>
-            <p class="text-xl md:text-2xl font-semibold max-w-xl text-emerald-50 leading-relaxed px-4">
+            <!-- SEO 語意優化：H1 設在品牌核心 -->
+            <h1 class="text-2xl sm:text-3.5xl md:text-5xl font-extrabold font-serif-eng tracking-wide mb-2 px-2">Unna's English Corner</h1>
+            <p class="text-lg md:text-xl text-accent-100 font-medium mb-4 tracking-wider uppercase">Junior High English Tutor</p>
+            <div class="w-16 h-1 bg-accent-500 rounded-full mb-5"></div>
+            <p class="text-lg sm:text-xl md:text-2xl font-semibold max-w-xl text-emerald-50 leading-relaxed px-4">
                 「 讓英文成為孩子自信的基石 」
             </p>
         </div>
-    </div>
+    </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-4 py-8 -mt-8 relative z-20">
+    <!-- Main Content Container (RWD 負邊距完美與 Header 銜接) -->
+    <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 -mt-6 sm:-mt-8 relative z-20">
         
-        <!-- Quick Pitch & Intro Card -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 mb-8 border border-slate-100">
-            <h2 class="text-2xl font-bold text-forest-900 mb-4 flex items-center">
-                <span class="w-2 h-6 bg-forest-700 rounded-full mr-3"></span>
+        <!-- Quick Pitch & Intro Card (優化行動端 Padding 間距) -->
+        <article class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 md:p-10 mb-8 border border-slate-100">
+            <h2 class="text-xl sm:text-2xl font-bold text-forest-900 mb-4 flex items-center">
+                <span class="w-1.5 h-6 bg-forest-700 rounded-full mr-2.5 sm:mr-3"></span>
                 您好，我是 Unna 老師！
             </h2>
-            <p class="text-slate-600 leading-relaxed text-base md:text-lg mb-8">
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
                 擁有豐富國中英語第一線教學經驗，並曾受邀擔任<b>敦煌書局教材試讀作家</b>。我深知國中生面對單字背不起來、文法搞不懂、會考題型不知所措的學習瓶頸。透過系統化文法拆解與引導式教學，帶領孩子建立邏輯與英文自信，不再死記硬背！
             </p>
 
-            <!-- Key Badges Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <!-- Badge 1: Textbook Reader (Updated) -->
+            <!-- Key Badges Grid (行動端 1 欄，平板 2 欄，桌機 4 欄) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 sm:mb-8">
+                <!-- Badge 1: Textbook Reader -->
                 <div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex items-start space-x-3">
-                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5">
+                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5 flex-shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 text-sm">敦煌書局教材試讀作家</h4>
-                        <p class="text-xs text-slate-500 mt-0.5">受邀撰寫專業分析，深諳各版本編排邏輯，精準規劃有效路徑</p>
+                        <h3 class="font-bold text-slate-800 text-sm">敦煌書局教材試讀作家</h3>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">受邀撰寫專業分析，深諳各版本編排邏輯，精準規劃學習路徑。</p>
                     </div>
                 </div>
 
                 <!-- Badge 2: Teaching Experience -->
                 <div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex items-start space-x-3">
-                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5">
+                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5 flex-shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 text-sm">指標補教實戰經驗</h4>
-                        <p class="text-xs text-slate-500 mt-0.5">曾任微風外語一對一英文家教、佳音英語英文課輔老師</p>
+                        <h3 class="font-bold text-slate-800 text-sm">指標補教實戰經驗</h3>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">曾任微風外語一對一英文家教、佳音英語英文課輔老師，因材施教。</p>
                     </div>
                 </div>
 
-                <!-- Badge 3: Academic Background & Normal Uni (Updated - Removed "頂尖") -->
+                <!-- Badge 3: Academic Background & Normal Uni -->
                 <div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex items-start space-x-3">
-                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5">
+                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5 flex-shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 text-sm">英國碩士 ＋ 師範體系</h4>
-                        <p class="text-xs text-slate-500 mt-0.5">英國碩士學歷與師範背景雙重優勢，雅思 7 分，教育心理正向引導</p>
+                        <h3 class="font-bold text-slate-800 text-sm">英國碩士 ＋ 師範體系</h3>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">英國碩士學歷與師範背景雙優勢，雅思 7 分，教育心理正向引導。</p>
                     </div>
                 </div>
 
                 <!-- Badge 4: Exam Trend Expert -->
                 <div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex items-start space-x-3">
-                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5">
+                    <div class="p-2 bg-forest-600 text-white rounded-lg mt-0.5 flex-shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 text-sm">熟悉國中教材趨勢</h4>
-                        <p class="text-xs text-slate-500 mt-0.5">長期接觸國中教學領域，精確掌握康軒/翰林/南一會考命題</p>
+                        <h3 class="font-bold text-slate-800 text-sm">熟悉國中教材趨勢</h3>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">長期深耕國中英文，精確掌握康軒/翰林/南一會考命題方向。</p>
                     </div>
                 </div>
             </div>
 
             <!-- Teaching Features Checklist -->
-            <div class="border-t border-slate-100 pt-6">
-                <h3 class="text-lg font-bold text-forest-900 mb-4 flex items-center justify-center sm:justify-start">
-                    <svg class="w-5 h-5 mr-2 text-accent-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100-2H7zm3 0a1 1 0 100-2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path></svg>
-                    💡 Unna 老師的五大教學特色
+            <section class="border-t border-slate-100 pt-6">
+                <h3 class="text-base sm:text-lg font-bold text-forest-900 mb-4 flex items-center justify-center sm:justify-start">
+                    <svg class="w-5 h-5 mr-2 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100-2H7zm3 0a1 1 0edit-100" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path></svg>
+                    Unna 老師的五大教學特色
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                     <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-200/50 hover:bg-slate-50 transition-colors">
                         <span class="text-xs font-black text-forest-600 block mb-1">01. 精準把脈</span>
-                        <h5 class="font-bold text-slate-800 text-sm mb-1">學習盲點精確診斷</h5>
-                        <p class="text-xs text-slate-500">找出孩子文法與字彙卡關節點，用最適合教材對症下藥。</p>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">學習盲點診斷</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">精確找出孩子文法與單字卡關節點，對症下藥客製化編排教材。</p>
                     </div>
                     <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-200/50 hover:bg-slate-50 transition-colors">
                         <span class="text-xs font-black text-forest-600 block mb-1">02. 考試策略</span>
-                        <h5 class="font-bold text-slate-800 text-sm mb-1">高效閱讀解題技巧</h5>
-                        <p class="text-xs text-slate-500">傳授專門閱讀策略，引導迅速定位考點、破解考題盲區。</p>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">高效閱讀技巧</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">教授核心閱讀策略，特訓考題定位與結構式拆解，秒破命題考點。</p>
                     </div>
                     <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-200/50 hover:bg-slate-50 transition-colors">
                         <span class="text-xs font-black text-forest-600 block mb-1">03. 精緻客製</span>
-                        <h5 class="font-bold text-slate-800 text-sm mb-1">一對一高規量身訂製</h5>
-                        <p class="text-xs text-slate-500">根據學習狀況（進度超前/落後補強/會考複習）提供合適節奏。</p>
+                        <h5 class="font-bold text-slate-800 text-sm mb-1">一對一量身訂製</h5>
+                        <p class="text-xs text-slate-500 leading-relaxed">不論進度超前、弱底落後補強或會考總複習，提供最精確進度節奏。</p>
                     </div>
                     <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-200/50 hover:bg-slate-50 transition-colors">
-                        <span class="text-xs font-black text-forest-600 block mb-1">04. 邏輯理解</span>
-                        <h5 class="font-bold text-slate-800 text-sm mb-1">觀念透徹勝過死背</h5>
-                        <p class="text-xs text-slate-500">用淺顯邏輯圖解文法觀念，搭配句型練習讓孩子真正融會貫通。</p>
+                        <span class="text-xs font-black text-forest-600 block mb-1">04. 句型問答</span>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">問答引導不死背</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">不灌輸公式文法，經由引導式的實戰句型問答，在互動中內化觀念。</p>
                     </div>
                     <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-200/50 hover:bg-slate-50 transition-colors">
                         <span class="text-xs font-black text-forest-600 block mb-1">05. 心態導引</span>
-                        <h5 class="font-bold text-slate-800 text-sm mb-1">青春期正向溝通</h5>
-                        <p class="text-xs text-slate-500">以溫和堅定引導建立成就感，陪伴安撫面對會考英語的焦慮。</p>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">青春期正向溝通</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">理解國中學生的焦慮心理，溫和堅定引導，累積學習成就感。</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </article>
 
-        <!-- Course Plans & Offers -->
-        <div class="mb-12">
-            <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center">🎯 精緻教學課程方案</h3>
+        <!-- Course Plans & Offers (RWD 網格自適應與 Hover 特效提升) -->
+        <section class="mb-12">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 text-center">🎯 精緻英語家教方案</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Plan 1: Single Trial -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <div class="hover-trigger bg-white rounded-2xl p-5 sm:p-6 border border-slate-100 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300">
                     <div>
-                        <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold mb-4">首堂限定</span>
-                        <h4 class="text-xl font-bold text-slate-800 mb-1">單堂體驗課</h4>
-                        <p class="text-xs text-slate-400 mb-4">預約當日有效 (可抵後續報名費)</p>
+                        <span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold mb-4">首堂限定</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-1">單堂體驗課</h3>
+                        <p class="text-xs text-slate-400 mb-4">預約當日有效 (可折抵後續學費)</p>
                         <div class="flex items-baseline mb-4">
                             <span class="text-3xl font-extrabold text-forest-800 font-serif-eng">$500</span>
                             <span class="text-slate-500 text-sm ml-1">/ 堂</span>
                         </div>
                     </div>
                     <ul class="text-slate-600 text-sm space-y-2 mb-6 border-t pt-4">
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✓</span>一對一個別程度檢驗</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✓</span>個人化教材試讀</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2 flex-shrink-0">✓</span>一對一個別程度檢驗</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2 flex-shrink-0">✓</span>個人化專屬教材試讀</li>
                     </ul>
                 </div>
 
                 <!-- Plan 2: Summer Package -->
-                <div class="bg-amber-50 rounded-2xl p-6 border-2 border-accent-500 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <div class="hover-trigger bg-amber-50 rounded-2xl p-5 sm:p-6 border-2 border-accent-500 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300">
                     <div class="absolute top-0 right-0 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">熱門強檔</div>
                     <div>
-                        <span class="inline-block px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-xs font-bold mb-4">暑期限定 (最少20堂)</span>
-                        <h4 class="text-xl font-bold text-slate-800 mb-1">暑期密集方案</h4>
-                        <p class="text-xs text-slate-500 mb-4">7/1 – 8/31 限定 (最少需購買20堂，8/31前上完)</p>
+                        <span class="inline-block px-2.5 py-1 bg-accent-100 text-accent-700 rounded-full text-xs font-bold mb-4">暑期限定 (最少20堂)</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-1">暑期密集方案</h3>
+                        <p class="text-xs text-slate-500 mb-4">7/1 – 8/31 限定 (須在 8/31 前上完)</p>
                         <div class="flex items-baseline mb-4">
                             <span class="text-3xl font-extrabold text-accent-600 font-serif-eng">$800</span>
                             <span class="text-slate-500 text-sm ml-1">/ 堂</span>
                         </div>
                     </div>
                     <ul class="text-slate-600 text-sm space-y-2 mb-6 border-t border-accent-200 pt-4">
-                        <li class="flex items-center text-accent-800 font-semibold"><span class="text-accent-500 mr-2">✦</span>每次可合併上課2堂(2小時)</li>
-                        <li class="flex items-start"><span class="text-accent-500 mr-2 mt-0.5">✓</span><span><b class="text-slate-700">弱底學生加強：</b>打穩觀念，完美銜接下學期英文課程</span></li>
-                        <li class="flex items-start"><span class="text-accent-500 mr-2 mt-0.5">✓</span><span><b class="text-slate-700">會考黃金衝刺：</b>大考重點精準演練，信心衝刺</span></li>
-                        <li class="flex items-center"><span class="text-accent-500 mr-2">✓</span>提供 2 次臨時請假額度</li>
+                        <li class="flex items-center text-accent-800 font-semibold"><span class="text-accent-500 mr-2 flex-shrink-0">✦</span>每次可合併上課2堂(2小時)</li>
+                        <li class="flex items-start"><span class="text-accent-500 mr-2 mt-0.5 flex-shrink-0">✓</span><span><b class="text-slate-700">弱底加強：</b>打穩基礎，順利銜接新英文課</span></li>
+                        <li class="flex items-start"><span class="text-accent-500 mr-2 mt-0.5 flex-shrink-0">✓</span><span><b class="text-slate-700">會考衝刺：</b>精準考題定位與大量演練</span></li>
+                        <li class="flex items-center"><span class="text-accent-500 mr-2 flex-shrink-0">✓</span>提供 2 次臨時請假額度</li>
                     </ul>
                 </div>
 
-                <!-- Plan 3: Regular Month -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <!-- Plan 3: Regular Month (Updated Price to $900) -->
+                <div class="hover-trigger bg-white rounded-2xl p-5 sm:p-6 border border-slate-100 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300">
                     <div>
-                        <span class="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-bold mb-4">穩定進度</span>
-                        <h4 class="text-xl font-bold text-slate-800 mb-1">一般常規方案</h4>
-                        <p class="text-xs text-slate-400 mb-4">每週至少 1 堂，月初預付</p>
+                        <span class="inline-block px-2.5 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-bold mb-4">穩定進度</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-1">一般常規方案</h3>
+                        <p class="text-xs text-slate-400 mb-4">每週至少 1 堂，月初繳費（至少需上滿 3 個月）</p>
                         <div class="flex items-baseline mb-4">
-                            <span class="text-3xl font-extrabold text-forest-800 font-serif-eng">$850</span>
+                            <span class="text-3xl font-extrabold text-forest-800 font-serif-eng">$900</span>
                             <span class="text-slate-500 text-sm ml-1">/ 堂</span>
                         </div>
                     </div>
                     <ul class="text-slate-600 text-sm space-y-2 mb-6 border-t pt-4">
-                        <li class="flex items-center text-teal-800 font-semibold"><span class="text-emerald-500 mr-2">✦</span>每次可合併上課2堂(2小時)</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✓</span>月繳制，平穩累積進度與習慣</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✓</span>每學期提供 3 次請假額度</li>
+                        <li class="flex items-center text-teal-800 font-semibold"><span class="text-emerald-500 mr-2 flex-shrink-0">✦</span>每次可合併上課2堂(2小時)</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2 flex-shrink-0">✓</span>月繳制，平穩累積英文閱讀習慣</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2 flex-shrink-0">✓</span>每學期提供 3 次請假額度</li>
                     </ul>
                 </div>
 
                 <!-- Plan 4: Flexible Package -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <div class="hover-trigger bg-white rounded-2xl p-5 sm:p-6 border border-slate-100 shadow-md flex flex-col justify-between relative overflow-hidden transition-all duration-300">
                     <div>
-                        <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold mb-4">極高彈性 (5堂)</span>
-                        <h4 class="text-xl font-bold text-slate-800 mb-1">彈性常規方案</h4>
-                        <p class="text-xs text-slate-400 mb-4">兩個月內上完，無固定時間</p>
+                        <span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold mb-4">極高彈性 (5堂)</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-1">彈性常規方案</h3>
+                        <p class="text-xs text-slate-400 mb-4">兩個月內上完，無固定時間限制</p>
                         <div class="flex items-baseline mb-4">
                             <span class="text-3xl font-extrabold text-forest-800 font-serif-eng">$1,000</span>
                             <span class="text-slate-500 text-sm ml-1">/ 堂</span>
                         </div>
                     </div>
                     <ul class="text-slate-600 text-sm space-y-2 mb-6 border-t pt-4">
-                        <li class="flex items-center text-slate-700 font-semibold"><span class="text-emerald-500 mr-2">✦</span>每次可合併上課2堂(2小時)</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✓</span>配合孩子多重課表彈性預約</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✓</span>提供 2 次臨時請假額度</li>
+                        <li class="flex items-center text-slate-700 font-semibold"><span class="text-emerald-500 mr-2 flex-shrink-0">✦</span>每次可合併上課2堂(2小時)</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2 flex-shrink-0">✓</span>配合孩子多重課表彈性預排時間</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2 flex-shrink-0">✓</span>提供 2 次臨時請假額度</li>
                     </ul>
                 </div>
 
             </div>
 
-            <!-- Promotion Highlight Box -->
-            <div class="mt-8 bg-gradient-to-r from-accent-500 to-amber-500 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+            <!-- Promotion Highlight Box (Updated: "加100送2堂" changed to "體驗課全額折抵") -->
+            <div class="mt-8 bg-gradient-to-r from-accent-500 to-amber-500 rounded-2xl p-5 sm:p-8 text-white shadow-lg relative overflow-hidden">
                 <div class="absolute -right-10 -bottom-10 opacity-10 w-48 h-48 rounded-full border-8 border-white"></div>
-                <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
                     <div>
                         <div class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-wider mb-2">體驗課當日限定</div>
-                        <h4 class="text-xl md:text-2xl font-bold">🔥 當日報名專屬超級優惠！</h4>
-                        <p class="text-white/90 text-sm md:text-base mt-1">
-                            體驗課當天決定報名任一正式方案，僅需加價 <span class="font-extrabold text-yellow-200 text-lg font-serif-eng">$100</span> 元，即可立即額外獲得「<span class="font-extrabold text-yellow-200 text-lg">2 堂課程</span>」加碼贈送！
+                        <h4 class="text-lg sm:text-2xl font-bold">🔥 當日報名專屬超級優惠！</h4>
+                        <p class="text-white/90 text-sm sm:text-base mt-1 leading-relaxed">
+                            體驗課當天決定報名任一正式方案，即可享有「體驗課學費 <span class="font-extrabold text-yellow-200 text-lg font-serif-eng">$500</span> 元全額折抵」正式課程學費優惠！
                         </p>
                     </div>
-                    <div class="flex-shrink-0">
-                        <a href="#booking-section" class="inline-block bg-white text-accent-700 hover:bg-slate-50 font-bold px-6 py-3 rounded-xl shadow-md transition-all duration-300 hover:scale-105 active:scale-95 text-center w-full md:w-auto">
+                    <div class="flex-shrink-0 w-full md:w-auto">
+                        <a href="#booking-section" class="inline-block bg-white text-accent-700 hover:bg-slate-50 font-bold px-6 py-3.5 rounded-xl shadow-md transition-all duration-300 active:scale-95 text-center w-full md:w-auto">
                             立即預約諮詢
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Interactive Budget Calculator -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 mb-12 border border-slate-100">
-            <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-2 flex items-center">
-                <span class="w-2 h-6 bg-accent-500 rounded-full mr-3"></span>
+        <!-- Interactive Budget Calculator (智慧試算 RWD 加大觸控標靶) -->
+        <section class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 md:p-10 mb-12 border border-slate-100">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-800 mb-2 flex items-center">
+                <span class="w-1.5 h-6 bg-accent-500 rounded-full mr-2.5 sm:mr-3"></span>
                 💰 試算您的學習方案與預算
-            </h3>
+            </h2>
             <p class="text-slate-500 text-sm mb-6">歡迎使用下方試算功能，挑選最適合您孩子的課程預算組合。</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="space-y-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="space-y-5">
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">1. 選擇心儀方案</label>
-                        <select id="calc-plan" class="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-forest-600" onchange="calculateBudget()">
+                        <label for="calc-plan" class="block text-sm font-semibold text-slate-700 mb-2">1. 選擇心儀方案</label>
+                        <select id="calc-plan" class="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-forest-600 text-sm sm:text-base" onchange="calculateBudget()">
                             <option value="500-1-trial">單堂體驗課 ($500 / 1堂)</option>
                             <option value="800-20-summer" selected>暑期密集方案 ($800 / 至少20堂)</option>
-                            <option value="850-4-regular">一般常規方案 ($850 / 每月4堂估計)</option>
+                            <!-- Updated Price to $900 in selector -->
+                            <option value="900-12-regular">一般常規方案 ($900 / 至少3個月，共12堂起)</option>
                             <option value="1000-5-flex">彈性常規方案 ($1,000 / 5堂)</option>
                         </select>
                     </div>
@@ -302,133 +366,133 @@
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">2. 調整購買堂數</label>
                         <div class="flex items-center space-x-3">
-                            <button onclick="changeQty(-1)" class="w-10 h-10 rounded-lg bg-slate-100 text-slate-600 font-bold flex items-center justify-center hover:bg-slate-200 active:scale-95 transition-all">-</button>
-                            <input type="number" id="calc-qty" class="w-20 h-10 border border-slate-200 rounded-lg text-center font-bold font-serif-eng text-lg" value="20" min="1" oninput="calculateBudget()">
-                            <button onclick="changeQty(1)" class="w-10 h-10 rounded-lg bg-slate-100 text-slate-600 font-bold flex items-center justify-center hover:bg-slate-200 active:scale-95 transition-all">+</button>
-                            <span class="text-slate-500 text-sm">堂</span>
+                            <button onclick="changeQty(-1)" class="w-12 h-12 rounded-xl bg-slate-100 text-slate-600 font-bold flex items-center justify-center hover:bg-slate-200 active:scale-95 transition-all text-xl" aria-label="減少堂數">-</button>
+                            <input type="number" id="calc-qty" class="w-24 h-12 border border-slate-200 rounded-xl text-center font-bold font-serif-eng text-lg sm:text-xl" value="20" min="1" oninput="calculateBudget()" aria-label="堂數數量">
+                            <button onclick="changeQty(1)" class="w-12 h-12 rounded-xl bg-slate-100 text-slate-600 font-bold flex items-center justify-center hover:bg-slate-200 active:scale-95 transition-all text-xl" aria-label="增加堂數">+</button>
+                            <span class="text-slate-500 text-sm font-medium">堂</span>
                         </div>
                     </div>
 
-                    <div id="promo-toggle-container" class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center justify-between">
+                    <!-- Calculator promo checkbox: full credit discount of $500 -->
+                    <div id="promo-toggle-container" class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <input type="checkbox" id="calc-promo" class="w-5 h-5 rounded text-accent-600 focus:ring-accent-500 accent-accent-500 cursor-pointer" onchange="calculateBudget()">
-                            <div>
-                                <label for="calc-promo" class="font-bold text-slate-700 text-sm cursor-pointer block">勾選當日報名優惠</label>
-                                <p class="text-xs text-slate-500">體驗課當日決定報名，加價$100</p>
+                            <input type="checkbox" id="calc-promo" class="w-6 h-6 rounded text-accent-600 focus:ring-accent-500 accent-accent-500 cursor-pointer" onchange="calculateBudget()">
+                            <div class="pl-1">
+                                <label for="calc-promo" class="font-bold text-slate-700 text-sm sm:text-base cursor-pointer block">折抵體驗課學費</label>
+                                <p class="text-xs text-slate-500 mt-0.5">體驗課當天決定報名，全額折抵 $500 元</p>
                             </div>
                         </div>
-                        <span class="text-xs bg-accent-500 text-white font-bold px-2 py-0.5 rounded-full">+2堂贈課</span>
+                        <span class="text-xs bg-accent-500 text-white font-bold px-2.5 py-1 rounded-full flex-shrink-0">立折 $500</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/60 text-center">
+                <div class="bg-slate-50 rounded-2xl p-5 sm:p-8 border border-slate-200/60 text-center">
                     <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">試算結果明細</p>
                     
                     <div class="grid grid-cols-2 gap-4 py-4 border-b border-slate-200/80 mb-4">
                         <div>
                             <p class="text-slate-400 text-xs">總課堂數</p>
-                            <p class="text-xl font-extrabold text-slate-700 font-serif-eng" id="res-total-lessons">20 堂</p>
+                            <p class="text-lg sm:text-2xl font-extrabold text-slate-700 font-serif-eng mt-1" id="res-total-lessons">20 堂</p>
                         </div>
                         <div>
                             <p class="text-slate-400 text-xs">平均每堂價格</p>
-                            <p class="text-xl font-extrabold text-slate-700 font-serif-eng" id="res-avg-price">$800 / 堂</p>
+                            <p class="text-lg sm:text-2xl font-extrabold text-slate-700 font-serif-eng mt-1" id="res-avg-price">$800 / 堂</p>
                         </div>
                     </div>
 
                     <p class="text-slate-400 text-xs mb-1">應付總金額</p>
-                    <p class="text-4xl font-black text-forest-800 font-serif-eng mb-1" id="res-total-price">$16,000</p>
+                    <p class="text-3xl sm:text-4.5xl font-black text-forest-800 font-serif-eng mb-1" id="res-total-price">$16,000</p>
                     <p class="text-xs text-accent-600 font-semibold" id="res-promo-note">※ 暑期密集最少 20 堂，且須於 8/31 前上完</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Study Pact -->
-        <div class="grid grid-cols-1 gap-8 mb-12">
+        <!-- Study Pact Section (自適應滿寬大卡片) -->
+        <section class="max-w-3xl mx-auto mb-12">
             
             <!-- Learning Agreement (學習公約) -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-slate-100">
-                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
-                    <svg class="w-6 h-6 text-forest-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+            <div class="bg-white rounded-2xl shadow-lg p-5 sm:p-8 border border-slate-100">
+                <h2 class="text-lg sm:text-xl font-bold text-slate-800 mb-5 flex items-center justify-center sm:justify-start">
+                    <svg class="w-6 h-6 text-forest-700 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                     📝 學習公約與上課規範
-                </h3>
+                </h2>
                 
-                <div class="space-y-4 text-slate-600 text-sm">
+                <div class="space-y-4 text-slate-600 text-xs sm:text-sm leading-relaxed">
                     <!-- Twin-lesson usage highlight -->
                     <div class="bg-forest-50 border border-forest-200 rounded-xl p-4 flex items-start space-x-3">
                         <svg class="w-5 h-5 text-forest-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <div>
-                            <h5 class="font-bold text-forest-900 text-sm">🕒 彈性課堂合併說明</h5>
-                            <p class="text-xs text-slate-600 mt-1">
-                                為了讓閱讀策略訓練、會考解題定位技巧演練更連貫、更有深度，<b>每次上課可選擇使用 2 堂課（即一次上滿 2 小時）</b>，整體學習效果倍增！
+                            <h3 class="font-bold text-forest-900 text-sm sm:text-base">🕒 彈性課堂與扣堂說明</h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                                為了讓閱讀策略訓練、會考解題定位技巧演練更連貫、更有深度，<b>每次上課可選擇使用 2 堂課（即一次上滿 2 小時），當天則固定扣除 2 堂課的額度</b>。
                             </p>
                         </div>
                     </div>
 
                     <div class="border-l-4 border-emerald-500 pl-4 py-1">
                         <h4 class="font-bold text-slate-800 mb-1">提前通知（48小時前）</h4>
-                        <p>視為「<b>延期</b>」，請家長或學生主動溝通協調時間補課，該堂不計入請假額度。</p>
+                        <p>視為「<b>延期</b>」，請家長 or 學生主動溝通協調時間補課，該堂不計入請假額度。</p>
                     </div>
 
                     <div class="border-l-4 border-red-500 pl-4 py-1">
                         <h4 class="font-bold text-slate-800 mb-1">臨時通知（48小時內）</h4>
                         <p>視為「<b>扣除額度</b>」，請依照以下方案請假額度行使：</p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-500">
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-500 text-xs sm:text-sm">
                             <li><b class="text-slate-700">暑期/彈性方案</b>：提供 2 次臨時請假額度。</li>
                             <li><b class="text-slate-700">一般方案</b>：每學期 (每半年) 提供 3 次臨時請假額度。</li>
                         </ul>
-                        <p class="mt-2 text-xs text-red-500 font-medium">註：額度用畢後，臨時缺席該堂課視同已教學，不予補課或退費。</p>
+                        <p class="mt-2 text-xs text-red-500 font-semibold">註：額度用畢後，臨時缺席該堂課視同已教學，不予補課或退費。</p>
                     </div>
 
                     <!-- Vacation Announcement -->
                     <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start space-x-3">
                         <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         <div>
-                            <h5 class="font-bold text-slate-800 text-xs md:text-sm">老師出國通知 ✈️</h5>
-                            <p class="text-xs text-slate-500 mt-1">
+                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm">老師出國通知 ✈️</h3>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
                                 老師預計於 <b>8/10 – 8/17</b> 出國，該期間課程暫停，課程進度自動順延。
                             </p>
                         </div>
                     </div>
 
-                    <p class="text-xs text-slate-400 mt-4">
-                        ※ 費用已包含個人化教材設計、課後作業批改及深度學習進度追蹤服務。
+                    <p class="text-xs text-slate-400 mt-4 text-center">
+                        ※ 費用已包含個人化教材設計、課後作業批改及學習進度深度追蹤服務。
                     </p>
                 </div>
             </div>
 
+        </section>
 
-        </div>
-
-        <!-- Contact & Interactive Form (預約與對話產生器) -->
-        <div id="booking-section" class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
+        <!-- Contact & Interactive Form (預約與對話產生器 RWD 重構) -->
+        <section id="booking-section" class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
             <div class="bg-forest-800 text-white p-6 md:p-8 text-center">
-                <h3 class="text-2xl font-bold mb-2">✨ 立即預約諮詢</h3>
-                <p class="text-forest-100 text-sm">請在下方填寫孩子的基本學習狀況，系統將自動產生完整諮詢訊息，貼心又省時！</p>
+                <h2 class="text-xl sm:text-2xl font-bold mb-2">✨ 立即預約諮詢</h2>
+                <p class="text-forest-100 text-xs sm:text-sm">請在下方填寫孩子的基本學習狀況，系統將自動產生完整諮詢訊息，貼心又省時！</p>
             </div>
 
-            <div class="p-6 md:p-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-5 sm:p-8 md:p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                     
                     <!-- Interactive Info Form -->
                     <div class="space-y-4">
-                        <h4 class="font-bold text-slate-800 border-b pb-2 text-base flex items-center">
+                        <h3 class="font-bold text-slate-800 border-b pb-2 text-sm sm:text-base flex items-center">
                             <span class="w-1.5 h-4 bg-forest-600 mr-2 rounded-full"></span>
                             第一步：填寫基本諮詢資料
-                        </h4>
+                        </h3>
                         
                         <!-- 1. Grade & Textbook -->
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">1. 就讀年級與目前學校版本 *</label>
-                            <input type="text" id="parent-grade" class="w-full h-10 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" placeholder="例如：升國二，學校使用翰林版" oninput="updateMsgTemplate()">
+                            <label class="block text-xs font-bold text-slate-500 mb-1.5">1. 就讀年級與目前學校版本 *</label>
+                            <input type="text" id="parent-grade" class="w-full h-11 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" placeholder="例如：升國二，學校使用翰林版" oninput="updateMsgTemplate()">
                         </div>
                         
-                        <!-- 2. Desired Plan -->
+                        <!-- 2. Desired Plan (Updated Option Label with commitment) -->
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">2. 期望諮詢的方案 *</label>
-                            <select id="parent-plan" class="w-full h-10 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" onchange="updateMsgTemplate()">
+                            <label id="parent-plan-label" for="parent-plan" class="block text-xs font-bold text-slate-500 mb-1.5">2. 期望諮詢的方案 *</label>
+                            <select id="parent-plan" class="w-full h-11 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" onchange="updateMsgTemplate()">
                                 <option value="單堂體驗課">單堂體驗課</option>
                                 <option value="暑期密集方案 (最少20堂)">暑期密集方案 (最少20堂)</option>
-                                <option value="一般常規方案 (每月常規)">一般常規方案 (每月常規)</option>
+                                <option value="一般常規方案 (每週至少1堂，月初繳費，至少上三個月)">一般常規方案 (每週至少1堂，月初繳費，至少上三個月)</option>
                                 <option value="彈性常規方案 (5堂包)">彈性常規方案 (5堂包)</option>
                             </select>
                         </div>
@@ -436,7 +500,7 @@
                         <!-- 3. Learning Experience & Difficulty -->
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">3. 過去英文學習經驗與目前困難 *</label>
-                            <textarea id="parent-experience" rows="3" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" placeholder="例如：小五到小六在佳音補了兩年，國中後就沒補。目前最頭痛的是單字背了就忘、文法觀念非常混亂..." oninput="updateMsgTemplate()"></textarea>
+                            <textarea id="parent-experience" rows="3" class="w-full p-3 rounded-xl border border-slate-200/50 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" placeholder="例如：小五到小六在佳音補了兩年，國中後就沒補。目前最頭痛的是單字背了就忘、文法觀念非常混亂..." oninput="updateMsgTemplate()"></textarea>
                         </div>
 
                         <!-- 4. Review Time -->
@@ -446,67 +510,67 @@
                                 <option value="每週預計可撥出 1 ~ 2 小時進行英文練習">每週預計可撥出 1 ~ 2 小時（基礎複習）</option>
                                 <option value="每週預計可撥出 2 ~ 3 小時穩定複習與演練">每週預計可撥出 2 ~ 3 小時（中度穩定進步）</option>
                                 <option value="每週預計可撥出 3 小時以上全力衝刺英文">每週預計可撥出 3 小時以上（會考高分衝刺）</option>
-                                <option value="每週複習時間較不固定，需依學業彈性調整">複習時間較不固定，需視當週學業彈性調整</option>
+                                <option value="每週複習時間較不固定，需依學業彈性調整">每週複習時間較不固定，需視當週學業彈性調整</option>
                             </select>
                         </div>
 
                         <!-- 5. Learning Goal -->
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">5. 近期最希望改善的學習目標？ *</label>
-                            <input type="text" id="parent-goal" class="w-full h-10 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" placeholder="例如：扎實釐清文法、突破會考閱讀題型、穩定在校成績..." oninput="updateMsgTemplate()">
+                            <label for="parent-goal" class="block text-xs font-bold text-slate-500 mb-1.5">5. 近期最希望改善的學習目標？ *</label>
+                            <input type="text" id="parent-goal" class="w-full h-11 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" placeholder="例如：扎實釐清文法、突破會考閱讀題型、穩定在校成績..." oninput="updateMsgTemplate()">
                         </div>
 
                         <!-- 6. Cooperation Willingness -->
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">6. 孩子對於作業練習與穩定演練的配合意願？ *</label>
-                            <select id="parent-cooperate" class="w-full h-10 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" onchange="updateMsgTemplate()">
+                            <label id="parent-cooperate-label" for="parent-cooperate" class="block text-xs font-bold text-slate-500 mb-1.5">6. 孩子對於作業練習與穩定演練的配合意願？ *</label>
+                            <select id="parent-cooperate" class="w-full h-11 px-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-600" onchange="updateMsgTemplate()">
                                 <option value="孩子非常願意配合，渴望透過穩定練習獲得成就感！">孩子非常願意配合，渴望穩定進步！</option>
                                 <option value="願意配合作業，但需要老師與家長溫和引導及適度陪伴。">願意配合作業，但可能需要老師溫和督促與陪伴。</option>
-                                <option value="學校課業繁重，希望能彈性調整作業難度與數量。">學校課業繁重，希望作業分量能彈性彈性調整。</option>
+                                <option value="學校課業繁重，希望能彈性調整作業難度與數量。">學校課業繁重，希望作業分量能彈性調整。</option>
                             </select>
                         </div>
                         
                         <div class="pt-2">
-                            <button onclick="copyGeneratedMessage()" class="w-full h-12 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-xl shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center space-x-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 112-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                            <button onclick="copyGeneratedMessage()" class="w-full h-12 bg-accent-500 hover:bg-accent-600 active:scale-98 text-white font-bold rounded-xl shadow-md transition-all duration-300 flex items-center justify-center space-x-2">
+                                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 112-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                                 <span>複製自動生成的諮詢訊息</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- QR Code and Action Directions -->
-                    <div class="flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 md:pl-8 text-center">
-                        <h4 class="font-bold text-slate-800 mb-4 text-base">
+                    <div class="flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-slate-100 pt-6 lg:pt-0 lg:pl-8 text-center">
+                        <h3 class="font-bold text-slate-800 mb-4 text-sm sm:text-base">
                             第二步：掃描 LINE 條碼聯繫老師！
-                        </h4>
+                        </h3>
                         
-                        <!-- QR Code Frame -->
-                        <div class="w-48 h-48 bg-slate-50 p-2 rounded-2xl border border-slate-200/80 shadow-md mb-4 flex items-center justify-center overflow-hidden">
+                        <!-- QR Code Frame (大坪林/七張捷運專屬 LINE 諮詢二維碼) -->
+                        <div class="w-44 h-48 sm:w-48 bg-slate-50 p-2.5 rounded-2xl border border-slate-200/80 shadow-md mb-4 flex items-center justify-center overflow-hidden">
                             <!-- Using uploaded file: IMG_5451 2.PNG -->
-                            <img src="IMG_5451 2.PNG" alt="LINE QR Code" class="w-full h-full object-contain">
+                            <img src="IMG_5451 2.PNG" alt="Unna 老師官方 LINE QR Code 二維碼" class="w-full h-full object-contain">
                         </div>
 
-                        <p class="text-xs text-slate-400 mb-6 max-w-xs">
-                            長按圖片儲存或直接用 LINE 掃描。將剛剛產生的訊息貼給 Unna 老師，我們會立即與您確認時間並規劃課程！
+                        <p class="text-xs text-slate-400 mb-6 max-w-xs leading-relaxed">
+                            手機端可長按上方 QR Code 圖片儲存，或直接使用 LINE 掃描。將剛才複製的訊息貼給 Unna 老師，讓我們一起協助孩子英文開竅！
                         </p>
 
                         <!-- Generated Message Preview for parents -->
-                        <div class="w-full bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 text-left text-xs">
-                            <span class="font-bold text-slate-400 block mb-1">訊息預覽：</span>
-                            <div id="msg-preview" class="text-slate-600 leading-relaxed whitespace-pre-wrap">請先填寫左方欄位。</div>
+                        <div class="w-full bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 text-left text-xs leading-relaxed">
+                            <span class="font-bold text-slate-400 block mb-1">諮詢訊息複製預覽：</span>
+                            <div id="msg-preview" class="text-slate-600 whitespace-pre-wrap">請先填寫左方資料，即可快速產出。</div>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12 text-center text-xs border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4 space-y-3">
-            <p class="text-slate-300 font-bold font-serif-eng text-sm">Unna's English Corner</p>
-            <p>新北市新店區大坪林/七張捷運站附近實體授課 / 線上精緻一對一教學</p>
+            <p class="text-slate-300 font-bold font-serif-eng text-sm tracking-wider">Unna's English Corner</p>
+            <p class="leading-relaxed">新北市新店區大坪林/七張捷運站附近實體授課 / 線上精緻一對一教學</p>
             <p>© 2026 Unna's English Corner. All rights reserved.</p>
         </div>
     </footer>
@@ -519,7 +583,7 @@
             document.getElementById('avatar-fallback').classList.remove('hidden');
         }
 
-        // 1. Budget Estimator Logic
+        // 1. Budget Estimator Logic (隨著手機端與電腦端自適應防呆限制)
         function changeQty(amount) {
             const qtyInput = document.getElementById('calc-qty');
             const planSelect = document.getElementById('calc-plan').value;
@@ -529,9 +593,12 @@
             let currentVal = parseInt(qtyInput.value) || 0;
             let newVal = currentVal + amount;
             
-            // Enforce minimum limit of 20 for summer plan
+            // 暑期密集方案硬限制至少 20 堂
             if (planType === 'summer' && newVal < 20) {
                 newVal = 20;
+            // 一般常規方案硬限制至少 12 堂 (3個月)
+            } else if (planType === 'regular' && newVal < 12) {
+                newVal = 12;
             } else if (newVal < 1) {
                 newVal = 1;
             }
@@ -552,18 +619,22 @@
             const defaultQty = parseInt(parts[1]);
             const planType = parts[2];
 
-            // If user changes plan, set standard quantity default if it matches default option trigger
-            // (Only override if they switched options)
+            // 方案切換時，自動帶入預設數量（防呆）
             if (this.lastSelectedPlan !== planSelect) {
                 qtyInput.value = defaultQty;
                 this.lastSelectedPlan = planSelect;
             }
 
-            // Enforce dynamic min limit based on plan type (20 lessons min limit for summer plan)
+            // Enforce dynamic min limit based on plan type (20 lessons min limit for summer plan, 12 for regular plan)
             if (planType === 'summer') {
                 qtyInput.min = 20;
                 if (parseInt(qtyInput.value) < 20) {
                     qtyInput.value = 20;
+                }
+            } else if (planType === 'regular') {
+                qtyInput.min = 12;
+                if (parseInt(qtyInput.value) < 12) {
+                    qtyInput.value = 12;
                 }
             } else {
                 qtyInput.min = 1;
@@ -572,7 +643,7 @@
             let qty = parseInt(qtyInput.value) || 0;
             if (qty < 1) qty = 1;
 
-            // Only allow promo checkbox for non-trial plans
+            // 體驗方案不提供贈課優惠勾選
             if (planType === 'trial') {
                 promoContainer.classList.add('opacity-50', 'pointer-events-none');
                 promoCheckbox.checked = false;
@@ -584,29 +655,31 @@
             let totalLessons = qty;
             
             if (promoCheckbox.checked) {
-                totalPrice += 100; // adding promo cost
-                totalLessons += 2; // adding 2 extra classes
+                totalPrice -= 500; // 體驗當天報名正式方案，直接全額折抵 $500 元
             }
 
-            // Calculate average
+            // 計算均價 (以未折抵時的方案原價均算單堂，或直接計算折抵後的真實堂價)
             const avgPrice = Math.round(totalPrice / totalLessons);
 
-            // Update UI elements
+            // 更新 UI 數據明細
             document.getElementById('res-total-lessons').innerText = totalLessons + ' 堂';
             document.getElementById('res-avg-price').innerText = '$' + avgPrice.toLocaleString() + ' / 堂';
             document.getElementById('res-total-price').innerText = '$' + totalPrice.toLocaleString();
 
-            // Set dynamic helpers notes
+            // 設定對應的動態狀態說明文字
             const noteEl = document.getElementById('res-promo-note');
             if (promoCheckbox.checked) {
-                noteEl.innerText = "✨ 已套用首日報名特惠 (加碼贈送 2 堂課)！";
+                noteEl.innerText = "✨ 已套用體驗當日報名優惠（全額折抵體驗學費 $500 元）！";
                 noteEl.className = "text-xs text-emerald-600 font-bold";
             } else {
                 if (planType === 'summer') {
                     noteEl.innerText = "※ 暑期密集最少 20 堂，且須於 8/31 前上完（可2堂連上）";
                     noteEl.className = "text-xs text-accent-600 font-semibold";
+                } else if (planType === 'regular') {
+                    noteEl.innerText = "※ 一般常規方案最少需上滿 3 個月 (每週至少1堂，月初繳費)";
+                    noteEl.className = "text-xs text-emerald-600 font-semibold";
                 } else if (planType === 'trial') {
-                    noteEl.innerText = "※ 單堂檢測完畢，當日報名正式課最優惠";
+                    noteEl.innerText = "※ 單堂程度檢測完畢，當日報名正式課最優惠";
                     noteEl.className = "text-xs text-slate-500 font-medium";
                 } else {
                     noteEl.innerText = "※ 個人客製化講義與會考策略特訓全面包含";
@@ -615,10 +688,10 @@
             }
         }
 
-        // Initialize calculator properties
+        // 啟動預算試算初始化
         calculateBudget();
 
-        // 2. Interactive Message Generator for LINE Consultation (Refined fields according to latest prompts)
+        // 2. 預約對話產生器 Logic
         function updateMsgTemplate() {
             const grade = document.getElementById('parent-grade').value.trim() || '〔未填寫年級與學校版本〕';
             const plan = document.getElementById('parent-plan').value;
@@ -646,10 +719,10 @@
             return template;
         }
 
-        // Set initial preview
+        // 初始化諮詢預覽訊息
         updateMsgTemplate();
 
-        // 3. Custom Safe Clipboard Copy
+        // 3. 安全無障礙複製機制 (手機、電腦平板皆高度支援)
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toast-text');
@@ -669,7 +742,7 @@
             tempTextArea.value = textToCopy;
             document.body.appendChild(tempTextArea);
             tempTextArea.select();
-            tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+            tempTextArea.setSelectionRange(0, 99999); // 專為 Safari/iOS 行動端最佳化
             
             try {
                 const successful = document.execCommand('copy');
@@ -681,7 +754,6 @@
                 return false;
             }
         }
-
 
         function copyGeneratedMessage() {
             const msg = updateMsgTemplate();
